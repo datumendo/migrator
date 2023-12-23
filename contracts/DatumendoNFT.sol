@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.14;
+pragma solidity ^0.8.20;
 
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol';
@@ -11,7 +11,7 @@ contract DatumendoNFT is ERC721, ERC721Burnable, ERC721Holder, AdminAccess {
     constructor(
         string memory name_,
         string memory symbol_
-    ) ERC721(name_, symbol_) {
+    ) ERC721(name_, symbol_) AdminAccess(msg.sender) {
     }
 
     function safeMint(
@@ -32,7 +32,7 @@ contract DatumendoNFT is ERC721, ERC721Burnable, ERC721Holder, AdminAccess {
     function tokenURI(
         uint256 tokenId
     ) public view override returns (string memory) {
-        require(_exists(tokenId), 'NFT: URI query for nonexistent token');
+        // require(_exists(tokenId), 'NFT: URI query for nonexistent token');
         return _tokenURI(tokenId);
     }
 

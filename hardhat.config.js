@@ -1,7 +1,9 @@
 require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-etherscan");
+require("@nomicfoundation/hardhat-verify");
 require("hardhat-gas-reporter");
 require("dotenv").config();
+
+require('dotenv').config({ path: __dirname + '/.env' })
 
 const { PRIVATE_KEY, ETHERSCAN, POLYGONSCAN, FTMSCAN } = process.env;
 
@@ -63,7 +65,7 @@ module.exports = {
     }
   },
   solidity: {
-    version: "0.8.14",
+    version: "0.8.23",
     settings: {
       optimizer: {
         enabled: true,
